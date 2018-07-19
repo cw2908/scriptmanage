@@ -27,6 +27,8 @@ gem 'webpacker'
 gem 'react_on_rails', '11.0.9'
 # Resque
 gem 'resque', '1.27.4'
+# Figaro (protected app configs)
+gem 'figaro'
 
 
 # Use CoffeeScript for .coffee assets and views
