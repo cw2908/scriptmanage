@@ -27,6 +27,8 @@ gem 'webpacker'
 gem 'react_on_rails', '11.0.9'
 # Resque
 gem 'resque', git: 'https://github.com/resque/resque.git', ref: '2a03db682a41f47390412561ea8e7156a5d6a5fc' 
+# resque web
+gem 'resque-web', require: 'resque_web'
 # Figaro (protected app configs)
 gem 'figaro'
 # Devise
@@ -50,11 +52,15 @@ gem 'redis', '~> 4.0'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'minitest-rails'
+  gem 'guard'
+  gem 'guard-minitest', require: false
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
+  # gem 'capybara', '~> 2.13'
+  # gem 'selenium-webdriver'
 end
 
 group :development do
