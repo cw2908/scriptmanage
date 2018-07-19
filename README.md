@@ -20,3 +20,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
+
+Run with: `foreman start -f Procfile.dev`
