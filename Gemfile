@@ -26,10 +26,11 @@ gem 'webpacker'
 # React on Rails
 gem 'react_on_rails', '11.0.9'
 # Resque
-gem 'resque', '1.27.4'
+gem 'resque', git: 'https://github.com/resque/resque.git', ref: '2a03db682a41f47390412561ea8e7156a5d6a5fc' 
 # Figaro (protected app configs)
 gem 'figaro'
-
+# Devise
+gem 'devise'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -38,9 +39,12 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
