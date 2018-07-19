@@ -21,6 +21,8 @@ gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'react_on_rails', '11.0.9'
+
 
 # React on rails
 
