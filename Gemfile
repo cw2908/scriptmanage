@@ -21,6 +21,8 @@ gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'samanage'
+
 
 ### SCRIPTMANAGE Gems
 # React on Rails
@@ -33,7 +35,7 @@ gem 'resque-web', require: 'resque_web'
 gem 'figaro'
 # Devise
 gem 'devise'
-
+3
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -52,6 +54,7 @@ gem 'redis', '~> 4.0'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'minitest-rails'
   gem 'guard'
   gem 'guard-minitest', require: false
