@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
 
   protected
   # def authenticate
-  #   # Generic authentication example. Prefer Devise
+  #   # Generic authentication example. Prefer Devise (run devise generator for auth)
   #   authenticate_or_request_with_http_basic do |username, password|
-  #     username == ENV['SPS_ADMIN_U'] && password == ENV['SPS_ADMIN_P']
+  #     username == ENV['ADMIN_USER'] && password == ENV['ADMIN_PASS']
   #   end
   # end
 end

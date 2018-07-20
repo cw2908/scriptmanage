@@ -6,6 +6,6 @@
 
 - 
 
-Service Generator
+Generate new service with `rails g service <name>`
 
-Run with: `foreman start -f Procfile.dev`
+Run in Development with: `foreman start -f Procfile.dev`
