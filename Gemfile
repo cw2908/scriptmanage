@@ -8,8 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgres as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -21,13 +21,13 @@ gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'samanage'
-
 
 ### SCRIPTMANAGE Gems
-# React on Rails
+# Use Samanage api commands
+gem 'samanage'
+# React on Rails config if needed
 gem 'react_on_rails', '11.0.9'
-# Resque
+# Resque (with the fix)
 gem 'resque', git: 'https://github.com/resque/resque.git', ref: '2a03db682a41f47390412561ea8e7156a5d6a5fc' 
 # resque web
 gem 'resque-web', require: 'resque_web'
@@ -35,7 +35,6 @@ gem 'resque-web', require: 'resque_web'
 gem 'figaro'
 # Devise
 gem 'devise'
-3
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

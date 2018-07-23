@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  # before_action :authenticate
+  protect_from_forgery with: :exception, prepend: true
+  before_action :authenticate_user!
+
 
   def index
+    current_user
   end
+
 
   protected
   # def authenticate
