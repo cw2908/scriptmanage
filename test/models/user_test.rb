@@ -1,9 +1,8 @@
-require "test_helper"
+require 'minitest/autorun'
 
 describe User do
-  let(:user) { User.new }
-
-  it "must be valid" do
-    value(user).must_be :valid?
+  it "Users can be created" do
+    user = User.create(email: 'user@example.com', password: 'pass')
+    assert_instance_of(User, user)
   end
 end

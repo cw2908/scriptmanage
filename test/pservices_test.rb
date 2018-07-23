@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 
 describe Pservices do
-  it 'exists' do 
+  it 'is a loaded module' do 
     assert_equal(Pservices.class, Module)
   end
   it 'responds to list_services' do 

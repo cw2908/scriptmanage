@@ -1,5 +1,5 @@
 module Pservices
-  module ExampleService
+  module Example
     @samanage = Samanage::Api.new(token: ENV['STOKEN'])
     @options = {
       self: self.to_s
