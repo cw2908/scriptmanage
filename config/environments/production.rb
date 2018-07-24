@@ -89,6 +89,15 @@ config.webpacker.check_yarn_integrity = false
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => ENV.fetch('GOOGLE_APP_ID'),
+    :password             => ENV.fetch('GOOGLE_APP_KEY'),
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end

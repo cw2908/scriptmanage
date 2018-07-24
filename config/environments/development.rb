@@ -59,4 +59,13 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => ENV.fetch('GOOGLE_APP_ID'),
+    :password             => ENV.fetch('GOOGLE_APP_KEY'),
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
 end
