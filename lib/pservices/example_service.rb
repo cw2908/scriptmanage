@@ -9,7 +9,7 @@ module Pservices
         name: 'Example Service',
         description: 'Here to make sure that tests work',
         required_input_fields: [],
-        expected_output: "Some FIle",
+        expected_output: "Some File",
         account: nil,
       }
     end
