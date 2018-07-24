@@ -5,7 +5,7 @@
 
 - Rails 5 / Ruby 2.4.2
 
-- NodeJS (using yarn for client builds)
+- NodeJS (use `yarn install` for webpack and node modules)
  
 
 
