@@ -4,8 +4,8 @@ class Rails::ServiceGenerator < Rails::Generators::NamedBase
 
   
   def create_services_file
-    copy_file 'services.rb', "lib/pservices/#{file_name}.rb"
-    copy_file 'services_test.rb', "test/pservices/#{file_name}_test.rb"
+    template 'services.template', "lib/pservices/#{file_name}.rb"
+    template 'services_test.template', "test/pservices/#{file_name}_test.rb"
   end
 
   private 
