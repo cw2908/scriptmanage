@@ -1,16 +1,18 @@
 module Pservices
-  def self.list_services
+  def list_services
     [
      Pservices::ExampleService 
     ]
   end
 
 
-  def self.write_to_csv(filename: '' , headers: [], row: '', mode: 'a+')
+  def write_to_csv(filename: '' , headers: [], row: '', mode: 'a+')
     CSV.open(filename, mode, write_headers: true, force_quotes: true) do |csv| 
       csv << headers if csv.count.eql? 0
       csv << row
     end
   end
+
+  module_function :list_services, :write_to_csv
 end
 
