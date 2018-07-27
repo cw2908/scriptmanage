@@ -16,7 +16,7 @@ class Rails::ServiceGenerator < Rails::Generators::NamedBase
   
     in_root do
       gsub_file 'lib/pservices.rb', /(#{Regexp.escape(sentinel)})/mi do |match|
-        "#{match}\n\t\tPservices::#{name},\n"
+        "#{match}\n\t\t\tPservices::#{name},"
       end
     end
   end
