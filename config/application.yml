@@ -18,4 +18,4 @@ development:
 
 
 production:
-  secret: test
+  
