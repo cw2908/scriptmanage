@@ -1,12 +1,12 @@
 module Pservices
   module <%= name.singularize.camelcase %>
-    @samanage = Samanage::Api.new(token: ENV['STOKEN'])
+    @samanage = Samanage::Api.new(token: ENV['ACCOUNT_TOKEN'])
     @options = {
       self: self.to_s
     }
     def describe
       {
-        name: <%= name %>,
+        name: '<%= name %>',
         description: 'Here to make sure that tests work',
         required_input_fields: [],
         expected_output: "Some FIle",
