@@ -15,7 +15,7 @@ development:
   RESQUE_WEB_HTTP_BASIC_AUTH_PASSWORD: 'pass'
   SCRIPTMANAGE_PASSWORD: 'pass'
   ACCOUNT_TOKEN: ''
- 
- 
- 
+
+
 production:
+  secret: test
