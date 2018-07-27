@@ -12,9 +12,9 @@ module Pservices
   end
 
 
-  def write_to_csv(filename: '' , headers: [], row: '', mode: 'a+')
-    CSV.open(filename, mode, write_headers: true, force_quotes: true) do |csv| 
-      csv << headers if csv.count.eql? 0
+  def write_to_csv(filename: '' , headers: [], row: '', mode: 'a')
+    write_headers = !File.exists?(filename)
+    CSV.open(filename, mode, write_headers: true, headers: headers, force_quotes: true) do |csv| 
       csv << row
     end
   end
