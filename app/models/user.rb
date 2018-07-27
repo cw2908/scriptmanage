@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
 
 
-  # Require 
+  # User must have approved param manually changed in the database
   def active_for_authentication? 
     super && approved? 
   end 

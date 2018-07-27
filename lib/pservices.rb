@@ -1,4 +1,10 @@
 module Pservices
+
+
+
+  # Pservices::list_services used: 
+  # => lib/tasks/services.rake
+  # => test/pservices_test.rb
   def list_services
     [
      Pservices::ExampleService 
