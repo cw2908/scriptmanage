@@ -7,6 +7,8 @@ module Pservices
   # => test/pservices_test.rb
   def list_services
     [
+      Pservices::AttachIncidentToWorkstation,
+			Pservices::AddHardwareSiteDepartment,
       Pservices::ExampleService 
     ]
   end
