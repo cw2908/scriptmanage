@@ -1,0 +1,52 @@
+{
+  "name": "scriptmanage-example",
+  "env": {
+    "ACCOUNT_TOKEN": {
+      "required": true
+    },
+    "REDIS_URL": {
+      "required": true
+    },
+    "SPS_ADMIN_P": {
+      "required": true
+    },
+    "SPS_ADMIN_U": {
+      "required": true
+    },
+    "GOOGLE_APP_ID": {
+      "required": true
+    },
+    "GOOGLE_APP_KEY": {
+      "required": true
+    },
+    "SCRIPTMANAGE_PASSWORD": {
+      "required": true
+    },
+    "RESQUE_WEB_HTTP_BASIC_AUTH_USER": {
+      "required": true
+    },
+    "RESQUE_WEB_HTTP_BASIC_AUTH_PASSWORD": {
+      "required": true
+    }
+  },
+  "formation": {
+    "resque": {
+      "quantity": 1
+    },
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "heroku-redis",
+    "scheduler"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
