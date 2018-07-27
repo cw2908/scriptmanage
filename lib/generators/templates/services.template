@@ -6,7 +6,7 @@ module Pservices
     }
     def describe
       {
-        name: '<%= name %>',
+        name: '<%= name.singularize.camelcase %>',
         description: 'Here to make sure that tests work',
         required_input_fields: [],
         expected_output: "Some FIle",
