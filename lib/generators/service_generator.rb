@@ -10,13 +10,13 @@ class Rails::ServiceGenerator < Rails::Generators::NamedBase
   end
 
   def append_services
-    log 'append_services', name.singularize.camelcase
+    log 'append_services', name.camelcase
     sentinel = 'def list_services
     ['
   
     in_root do
       gsub_file 'lib/pservices.rb', /(#{Regexp.escape(sentinel)})/mi do |match|
-        "#{match}\n\t\t\tPservices::#{name.singularize.camelcase},"
+        "#{match}\n\t\t\tPservices::#{name.camelcase},"
       end
     end
   end
