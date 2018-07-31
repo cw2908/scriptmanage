@@ -1,4 +1,4 @@
-require "test_helper"
+require 'minitest/autorun'
 
 describe ResultsMailer do
   # it "must be a real test" do
