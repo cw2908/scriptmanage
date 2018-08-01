@@ -2,7 +2,7 @@
   <div id='login-form'>
     <div class='login-form-box'>
       <div class='login-header'>
-        <h2 class='slds-page-header__title slds-truncate slds-align-middle'>Sign in</h2>
+        <h2 class='slds-page-header__title slds-truncate slds-align-middle'>Services</h2>
       </div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="slds-form-element">
@@ -11,18 +11,19 @@
         </div>
         <div class="slds-form-element">
           <%= f.label :password, class: 'slds-form-element__label'%><br />
-          <%= f.password_field :password, autocomplete: "off", class: "form-control slds-input" %>
+          <%= f.password_field :password, autocomplete: "off", id: 'password', class: "form-control slds-input" %>
         </div>
+        <div id='spacer'/>
         <div class="login-actions">
-        <% if devise_mapping.rememberable? -%>
-          <span class="form-control">
-            <%= f.check_box :remember_me, class: 'checkbox slds-checkbox', id: 'checkbox-login'  %>
-            <%= f.label :remember_me, class: 'slds-checkbox__label', for: 'checkbox-login'%>
-          </span>
-        <% end -%>
+          <% if devise_mapping.rememberable? -%>
+            <span class="form-control">
+              <%= f.check_box :remember_me, class: 'checkbox slds-checkbox', id: 'checkbox-login'  %>
+              <%= f.label :remember_me, class: 'slds-checkbox__label', for: 'checkbox-login'%>
+            </span>
+          <% end -%>
           <%= f.submit "Log in", class: 'login-button slds-button slds-button_brand' %>
         </div>
-      <%= render "devise/shared/links" %>
+        <%= render "devise/shared/links" %>
       <% end %>
     </div>
   <div />

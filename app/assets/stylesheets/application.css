@@ -43,8 +43,8 @@
 
 .login-form-box {
   /* border: 3px solid #ddd; */
-  border-radius: 6px;
-  padding: 2em;
+  /* border-radius: 6px; */
+  /* padding: 2em; */
 }
 
 
@@ -69,6 +69,10 @@
 
 .login-actions {
   /* max-width: 10em; */
-  margin: 0 auto;
+  margin: 1em auto;
   float: right
+}
+
+#password {
+  margin-bottom: 3em;
 }
