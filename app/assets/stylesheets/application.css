@@ -35,7 +35,8 @@
  }
 
  #login-form {
-  max-width: 40%;
+  min-width: 33em;
+  max-width: 33%;
   padding-top: 10em;
   margin: 0 auto;
   align-self: center;
