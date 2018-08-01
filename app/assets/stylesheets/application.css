@@ -22,7 +22,7 @@
  }
 
  body, html {
-   height: 100%
+   height: 100%;
  }
 
 
@@ -43,7 +43,7 @@
 
 .login-form-box {
   /* border: 3px solid #ddd; */
-  /* border-radius: 6px; */
+  border-radius: 6px;
   /* padding: 2em; */
 }
 
@@ -73,6 +73,6 @@
   float: right
 }
 
-#password {
-  margin-bottom: 3em;
+.last-item-spacer {
+  margin-bottom: 3em !important; 
 }
