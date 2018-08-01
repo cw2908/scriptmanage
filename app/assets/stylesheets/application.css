@@ -21,7 +21,18 @@
    box-sizing: border-box;
  }
 
+ body, html {
+   height: 100%
+ }
 
+
+ #login-container {
+   background: url('SamanageBG.png');
+   height: 100%;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+ }
 
  #login-form {
   max-width: 40%;
@@ -31,19 +42,33 @@
 }
 
 .login-form-box {
-  border: 3px solid #ddd;
+  /* border: 3px solid #ddd; */
   border-radius: 6px;
   padding: 2em;
 }
 
 
-.main-header h2 {
-  margin-bottom: 20px;
+.login-header>h2 {
   padding-bottom: 10px;
-  font-size: 40px
+  font-size: 3em;
+  vertical-align: middle;
+  margin: 0 auto 1em auto;
+  max-width: 40%;
+  color: white;
 }
 
-.login-form>input.form-control {
-  width: 60em;
-  background-color: white !important;
+.slds-form-element>input.form-control {
+  /* width: 33em; */
+  /* background-color: white !important; */
+  margin-bottom: 1em;
+}
+
+.slds-form-element__label, .slds-checkbox__label {
+  color: white !important;
+}
+
+.login-actions {
+  /* max-width: 10em; */
+  margin: 0 auto;
+  float: right
 }
