@@ -33,6 +33,6 @@ class Notification extends Component {
 Notification.propTypes = {
   message: PropTypes.string.isRequired,
   status_code: PropTypes.number.isRequired,
-  closeFunction: ptfr
+  closeFunction: PropTypes.func.isRequired,
 }
 export default Notification

@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import axios from "axios"
 import ReactDOM from "react-dom"
 import Notification from "./Notification"
-import { Button, Dropdown, DropdownTrigger } from "@salesforce/design-system-react"
+import { Button, Dropdown, DropdownTrigger, PageHeader } from "@salesforce/design-system-react"
 import IconSettings from "@salesforce/design-system-react/components/icon-settings"
 
 class Services extends Component {
@@ -66,7 +66,9 @@ class Services extends Component {
 
     return (
       <IconSettings iconPath="/assets/icons">
+          
         <div className='service-form'>
+          <PageHeader title='Request Service'/>
           {this.renderNotifications()}
           <Dropdown
             className='service-dropdown'
@@ -74,7 +76,7 @@ class Services extends Component {
             options={dropdownOptions}
             onSelect={(value) => this.updateValue(value)}
           >
-            <DropdownTrigger>
+            <DropdownTrigger className='service-dropdown'>
               <Button
                 iconCategory='utility'
                 iconName='down'
@@ -84,11 +86,14 @@ class Services extends Component {
               />
             </DropdownTrigger>
           </Dropdown>
-          <Button
-            label='Submit'
-            variant='brand'
-            onClick={(e) => this.handleSubmit(e)}
-          />
+          <div className='service-submit'>
+            <Button
+              className='service-submit-button'
+              label='Submit'
+              variant='brand'
+              onClick={(e) => this.handleSubmit(e)}
+            />
+          </div>
         </div>
       </IconSettings>
     )
