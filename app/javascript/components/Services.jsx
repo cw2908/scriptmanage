@@ -12,13 +12,13 @@ class Services extends Component {
     this.state = {
 
     }
-    this.updateValue = this.updateValue.bind(this)
+    this.updateSelection = this.updateSelection.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  updateValue(value) {
+  updateSelection(value) {
     console.log({value})
-    this.setState({service_name: value})
+    this.setState({service: value})
   }
 
   reInit(data) {
@@ -35,14 +35,15 @@ class Services extends Component {
     e.preventDefault()
     const params = {
       service: {
-        service_name: this.state.service_name && this.state.service_name.value,
+        service_name: this.state.service && this.state.service.service_name,
       },
       authenticity_token: this.props.authenticityToken
     }
+    console.log({params})
     axios
-      .post("./services",{...params})
-      .then((data) => this.reInit(data))
-      .catch((data) => this.reInit(data))
+      .post("./services",params)
+      .then(data => this.reInit(data))
+      .catch(data => this.reInit(data))
   }
 
   renderNotifications() {
@@ -59,10 +60,10 @@ class Services extends Component {
   render() {
     const {availableServices} = this.props
     const dropdownOptions = availableServices
-      .map(service => {return {label: service.name, value: service.service_name}})
+      .map(service => {return {label: service.name, service_name: service.service_name}})
     console.log({state: this.state})
     console.log({props: this.props})
-    const dropdownText = this.state.service_name && this.state.service_name.label || "Select"
+    const dropdownText = this.state.service && this.state.service.label || "Select"
 
     return (
       <IconSettings iconPath="/assets/icons">
@@ -74,7 +75,7 @@ class Services extends Component {
             className='service-dropdown'
             tabIndex='-1'
             options={dropdownOptions}
-            onSelect={(value) => this.updateValue(value)}
+            onSelect={(service_name) => this.updateSelection(service_name)}
           >
             <DropdownTrigger className='service-dropdown'>
               <Button
@@ -82,7 +83,7 @@ class Services extends Component {
                 iconName='down'
                 iconPosition='right'
                 label={dropdownText}
-                value={this.state.service_name}
+                value={this.state.service && this.state.service.label}
               />
             </DropdownTrigger>
           </Dropdown>
