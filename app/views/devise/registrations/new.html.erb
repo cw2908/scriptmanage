@@ -9,20 +9,20 @@
           <%= devise_error_messages! %>
 
           <div class="slds-form-element">
-            <%= f.label :email, class: 'slds-form-element__label' %><br />
+            <%= f.label :email, class: 'slds-form-element__label slds-text-color_inverse' %><br />
             <%= f.email_field :email, class: 'form-control slds-input', autofocus: true, autocomplete: "email" %>
           </div>
 
           <div class="slds-form-element">
-            <%= f.label :password, class: 'slds-form-element__label' %>
+            <%= f.label :password, class: 'slds-form-element__label slds-text-color_inverse' %>
             <% if @minimum_password_length %>
-              <em class='slds-form-element__label'>(<%= @minimum_password_length %> characters minimum)</em>
+              <em class='slds-form-element__label slds-text-color_inverse'>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
             <%= f.password_field :password, class: 'form-control slds-input', autocomplete: "off" %>
           </div>
 
           <div class="slds-form-element">
-            <%= f.label :password_confirmation, class: 'slds-form-element__label' %><br />
+            <%= f.label :password_confirmation, class: 'slds-form-element__label slds-text-color_inverse' %><br />
             <%= f.password_field :password_confirmation, class: 'form-control slds-input last-item-spacer', autocomplete: "off" %>
           </div>
 
