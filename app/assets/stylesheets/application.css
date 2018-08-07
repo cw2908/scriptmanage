@@ -78,7 +78,7 @@
 }
 
 .service-form{
-  margin: 2em auto;
+  margin: 7em auto;
   min-width: 10%;
   max-width: 20%;
   padding: 2em 2em 6em 2em;
@@ -95,4 +95,12 @@
 #service-submit {
   margin: 2em auto;
   float: right;
+}
+
+.service-dropdown {
+  margin: 0em auto;
+}
+
+.service-notification {
+  margin: 4em auto;
 }
