@@ -10,7 +10,8 @@ default: &default
   # ['app/assets', 'engine/foo/app/assets']
   resolved_paths: [
     'app/javascript',
-    'app/assets/icons/utility-sprite/svg'
+    'app/assets/icons/utility-sprite/svg',
+    'node_modules/@salesforce/design-system-react'
   ]
 
   # Reload manifest.json on all requests so we reload latest compiled packs

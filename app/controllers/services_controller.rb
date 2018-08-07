@@ -3,27 +3,34 @@ class ServicesController < ApplicationController
     puts current_user.inspect
     @auth_token = form_authenticity_token
     @available_services = Pservices.list_services.map(&:describe)
-    ap flash
-    puts "flash: #{flash.inspect}"
   end
 
   def create
     myparams = service_params
     puts myparams
+    service_name = service_params[:service_name]
+    valid_service = Pservices.list_services.include?(service_name.to_s.constantize)
     service_options = {
-      self: service_params[:name]
+      service_name: service_name
     }
     begin
-      ServiceRunner.perform_later(service_options)
-      flash_message = {success: "Queueing #{service_params[:name]}"}
+      puts "service_options: #{service_options.inspect}"
+      puts "valid_service: #{valid_service.inspect}"
+      if valid_service
+        ServiceRunner.perform_later(service_options)
+        @response = {message: "Service has been requested", status: 200}
+      else
+        @response = {message: "Invalid Service Name", status: 400}
+      end
     rescue => e
-      flash_message = {error: "Error: #{e.class}: #{e.inspect}"}
+      @response = {message: "Error: #{e.class}: #{e.inspect}", status: 500}
     end
-    redirect_to services_path, flash: flash_message
+    ap @response
+    render json: @response.as_json, status: @response[:status]
   end
   private
 
   def service_params
-    params.require(:service).permit(:name,:options)
+    params.require(:service).permit(:service_name,:options)
   end
 end

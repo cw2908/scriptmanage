@@ -31,7 +31,7 @@ module Pservices
 
     def pre_run(options: {})
       # self.run
-      # ServiceRunner.perform_later(@options)
+      ServiceRunner.perform_later(@options)
     end
 
     def run(options: {})
