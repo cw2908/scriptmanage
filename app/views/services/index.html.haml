@@ -1,0 +1,31 @@
+.slds-trial-header.slds-grid
+  %div{class:  "slds-text-align_center slds-text-heading_large slds-col slds-size_1-of-4", id: 'services-header'} Samanage Services
+
+-# - unless flash.empty?
+-#   - flash.each do |key, value|
+-#     - case key
+-#     - when 'alert'
+-#       .slds-notify.slds-notify_alert.slds-theme_alert-texture.slds-theme_warning{ :class => "alert-#{key}" }
+-#         %button.close{ :data => { :dismiss => "alert" } } x
+-#         %strong
+-#           = value
+-#     - when 'success'
+-#       .slds-notify.slds-notify_alert.slds-theme_alert-texture.slds-theme_info{ :class => "alert-#{key}" }
+-#         %button.close{ :data => { :dismiss => "success" } } x
+-#         %strong
+-#           = value
+-#     - when 'error'
+-#       .slds-notify.slds-notify_alert.slds-theme_alert-texture.slds-theme_error{ :class => "alert-#{key}" }
+-#         %button.close{ :data => { :dismiss => "error" } } x
+-#         %strong
+-#           = value
+
+-# .service-form
+-#   %h2{class: 'slds-text-align_center slds-text-heading_medium'}Request a Service
+-#   = form_for :service, url: {controller: 'services', action: 'create'} do |f|
+-#     #service-form
+-#       = label_tag :service_name, 'Service', class: 'slds-form-element__label'
+-#       = f.collection_select :name, @available_services, :name, :service_name, {:prompt => 'Select'}, {:class => 'slds-select'}
+-#     = f.submit 'Request', class: 'slds-button slds-button_brand', id: 'service-submit'
+
+#services{authenticityToken: @auth_token.to_json, availableServices: @available_services.to_json}

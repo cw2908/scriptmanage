@@ -11,7 +11,8 @@
         "useBuiltIns": true
       }
     ],
-    "react"
+    "react",
+    "@salesforce/babel-preset-design-system-react"
   ],
   "plugins": [
     "syntax-dynamic-import",

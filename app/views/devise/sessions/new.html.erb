@@ -6,11 +6,11 @@
       </div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="slds-form-element">
-          <%= f.label :email, class: 'slds-form-element__label'%><br />
+          <%= f.label :email, class: 'slds-form-element__label slds-text-color_inverse'%><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control slds-input" %>
         </div>
         <div class="slds-form-element">
-          <%= f.label :password, class: 'slds-form-element__label'%><br />
+          <%= f.label :password, class: 'slds-form-element__label slds-text-color_inverse'%><br />
           <%= f.password_field :password, autocomplete: "off", class: "form-control slds-input last-item-spacer" %>
         </div>
         <div id='spacer'/>
@@ -18,7 +18,7 @@
           <% if devise_mapping.rememberable? -%>
             <span class="form-control">
               <%= f.check_box :remember_me, class: 'checkbox slds-checkbox', id: 'checkbox-login'  %>
-              <%= f.label :remember_me, class: 'slds-checkbox__label', for: 'checkbox-login'%>
+              <%= f.label :remember_me, class: 'slds-checkbox__label slds-text-color_inverse', for: 'checkbox-login'%>
             </span>
           <% end -%>
           <%= f.submit "Log in", class: 'login-button slds-button slds-button_brand' %>
