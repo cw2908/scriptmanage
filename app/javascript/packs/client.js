@@ -11,10 +11,12 @@
 import ReactOnRails from "react-on-rails"
 import Services from "../components/Services"
 import Notification from "../components/Notification"
+import FormBuilder from "../components/FormBuilder"
 
 
 // This is how react_on_rails can see the HelloWorld in the browser.
 ReactOnRails.register({
   Services,
-  Notification
+  Notification,
+  FormBuilder
 })

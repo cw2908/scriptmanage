@@ -6,7 +6,10 @@ module Pservices
     }
 
     @form_fields = [
-      Pservices::FormField.new(label: 'Date', name: 'date', form_type: 'date', value_type: 'date', required: true)
+      Pservices::FormField.new(label: 'Date', name: 'start_date', form_type: 'date', value_type: 'date', required: false),
+      Pservices::FormField.new(label: 'Type your name', name: 'some_input', form_type: 'input', required: true),
+      Pservices::FormField.new(label: 'Select Something', name: 'selected_value', form_type: 'select', options: [{label: 'Choice A', value: 'A'},{label: 'Choice B', value: 'B'},{label: 'Choice C', value: 'C'}], required: true),
+      Pservices::FormField.new(label: 'Select Something Different', name: 'other_selection', form_type: 'select', options: [{label: 'Choice 1', value: '1'},{label: 'Choice 2', value: '2'},{label: 'Choice 3', value: '3'}], required: true)
     ]
     def service_name
       @options[:service_name]
@@ -35,8 +38,7 @@ module Pservices
     end
 
     def run(options: {})
-      puts "param1: #{options[:param1]}"
-      # do something
+      puts "#{self}.run received: #{options}"
     end
 
 
