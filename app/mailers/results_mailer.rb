@@ -10,9 +10,12 @@ class ResultsMailer < ApplicationMailer
 
     # Send attachments
     if files.respond_to?(:to_a)
-      files.to_a.each do |file|
-        if file.class == File
-          attachments[file.path.split('/').last] = File.read(f.path)
+      files.to_a.each do |filename|
+        case filename.class
+        when File
+          attachments[filename.path.split('/').last] = File.read(f.path)
+        when String
+          attachments[filename] = File.read(filename)
         end
       end
     end
