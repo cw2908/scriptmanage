@@ -12,11 +12,11 @@
     <%= stylesheet_link_tag   'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag   'salesforce-lightning-design-system', media: 'all'  %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'client' %>
   </head>
 
   <body>
-    <div class='app-content'>
+    <div id='app-content'>
       <%= yield %>
     </div>
   </body>

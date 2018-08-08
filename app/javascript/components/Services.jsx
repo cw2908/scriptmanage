@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         authenticityToken={authenticityToken}
         availableServices={availableServices}
       />,
-      document.body.appendChild(document.createElement("div"))
+      document.getElementById("app-content").appendChild(document.createElement("div"))
     )
   }
 })
