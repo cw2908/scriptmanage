@@ -17,6 +17,6 @@ Rails.application.config.assets.paths <<  Rails.root.join('app','assets','icons'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w( salesforce-lightning-design-system.css app-bundle.js )
-Rails.application.config.assets.precompile += %w( .svg )
+Rails.application.config.assets.precompile += %w( salesforce-lightning-design-system.css S_Logo.jpeg SamanageBG.png)
+Rails.application.config.assets.precompile += %w( .svg  .jpeg .png)
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
