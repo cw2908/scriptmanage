@@ -10,6 +10,8 @@ default: &default
   # ['app/assets', 'engine/foo/app/assets']
   resolved_paths: [
     'app/javascript',
+    'app/assets/images',
+    'app/assets/icons',
     'app/assets/icons/utility-sprite/svg',
     'node_modules/@salesforce/design-system-react'
   ]
