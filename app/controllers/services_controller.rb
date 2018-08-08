@@ -12,7 +12,11 @@ class ServicesController < ApplicationController
     valid_service = Pservices.list_services.include?(service_name.to_s.constantize)
     if valid_service
       begin
-        service_options = {service_name: service_name}
+        service_options = {
+          service_name: service_name,
+          options: service_params[:options].to_h
+        }
+        puts "service_options: #{service_options}"
         ServiceRunner.perform_later(service_options)
         @response = {message: "Service has been requested", status: 200}
       rescue => e
@@ -26,7 +30,12 @@ class ServicesController < ApplicationController
 
   private
   def service_params
-    params.require(:service).permit(:service_name,:options)
+    service_option_params = Pservices.list_services.map{|service|
+      JSON.parse(service.describe[:form_fields]).map{|f| f['name']}
+    }.flatten
+
+    puts "service_option_params: #{service_option_params.inspect}"
+    params.require(:service).permit(:service_name, options: service_option_params)
   end
-  
+
 end

@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import axios from "axios"
 import ReactDOM from "react-dom"
 import Notification from "./Notification"
+import FormBuilder from "./FormBuilder"
 import { Button, Dropdown, DropdownTrigger, PageHeader } from "@salesforce/design-system-react"
 import IconSettings from "@salesforce/design-system-react/components/icon-settings"
 
@@ -14,6 +15,7 @@ class Services extends Component {
     }
     this.updateSelection = this.updateSelection.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleForm = this.handleForm.bind(this)
   }
 
   updateSelection(value) {
@@ -27,8 +29,16 @@ class Services extends Component {
     this.setState({
       message: data.message || data.data.message,
       status_code: data.status || data.response && data.response.status,
-      service_name: null
+      service: null,
+      form: {}
     })
+  }
+
+  handleForm(e, fieldName) {
+    console.log({e})
+    let obj = {}
+    obj[fieldName] = e
+    this.setState({form: {...this.state.form, ...obj}})
   }
 
   handleSubmit(e) {
@@ -36,6 +46,7 @@ class Services extends Component {
     const params = {
       service: {
         service_name: this.state.service && this.state.service.service_name,
+        options: {...this.state.form}
       },
       authenticity_token: this.props.authenticityToken
     }
@@ -58,16 +69,14 @@ class Services extends Component {
   }
 
   render() {
+    const service = this.state.service
     const {availableServices} = this.props
     const dropdownOptions = availableServices
-      .map(service => {return {label: service.name, service_name: service.service_name}})
-    console.log({state: this.state})
-    console.log({props: this.props})
-    const dropdownText = this.state.service && this.state.service.label || "Select"
-
+      .map(service => {return {label: service.name, service_name: service.service_name, form_fields: service.form_fields}})
+    const dropdownText = service && service.label || "Select"
+    const formFields = service ? [...JSON.parse(service.form_fields)] : []
     return (
       <IconSettings iconPath="/assets/icons">
-          
         <div className='service-form'>
           <PageHeader title='Request Service'/>
           {this.renderNotifications()}
@@ -83,10 +92,14 @@ class Services extends Component {
                 iconName='down'
                 iconPosition='right'
                 label={dropdownText}
-                value={this.state.service && this.state.service.label}
+                value={service && service.label}
               />
             </DropdownTrigger>
           </Dropdown>
+          <FormBuilder 
+            formFields={formFields}
+            handleForm={this.handleForm}
+          />
           <div className='service-submit'>
             <Button
               className='service-submit-button'
