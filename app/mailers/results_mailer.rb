@@ -13,7 +13,7 @@ class ResultsMailer < ApplicationMailer
       files.to_a.each do |filename|
         case filename.class
         when File
-          attachments[filename.path.split('/').last] = File.read(f.path)
+          attachments[filename.path.split('/').last] = File.read(filename.path)
         when String
           attachments[filename] = File.read(filename)
         end
