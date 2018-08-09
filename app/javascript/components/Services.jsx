@@ -11,7 +11,6 @@ class Services extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
     }
     this.updateSelection = this.updateSelection.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -19,13 +18,10 @@ class Services extends Component {
   }
 
   updateSelection(value) {
-    console.log({value})
     this.setState({service: value})
   }
 
   reInit(data) {
-    console.log({data})
-    console.log(data)
     this.setState({
       message: data.message || data.data.message,
       status_code: data.status || data.response && data.response.status,
@@ -35,7 +31,6 @@ class Services extends Component {
   }
 
   handleForm(e, fieldName) {
-    console.log({e})
     let obj = {}
     obj[fieldName] = e
     this.setState({form: {...this.state.form, ...obj}})
@@ -50,7 +45,6 @@ class Services extends Component {
       },
       authenticity_token: this.props.authenticityToken
     }
-    console.log({params})
     axios
       .post("./services",params)
       .then(data => this.reInit(data))
@@ -76,40 +70,40 @@ class Services extends Component {
     const dropdownText = service && service.label || "Select"
     const formFields = service ? [...JSON.parse(service.form_fields)] : []
     return (
-      <IconSettings iconPath="/assets/icons">
-        <div className='service-form'>
-          <PageHeader title='Request Service'/>
-          {this.renderNotifications()}
-          <Dropdown
-            className='service-dropdown'
-            tabIndex='-1'
-            options={dropdownOptions}
-            onSelect={(service_name) => this.updateSelection(service_name)}
-          >
-            <DropdownTrigger className='service-dropdown'>
-              <Button
-                iconCategory='utility'
-                iconName='down'
-                iconPosition='right'
-                label={dropdownText}
-                value={service && service.label}
-              />
-            </DropdownTrigger>
-          </Dropdown>
-          <FormBuilder 
-            formFields={formFields}
-            handleForm={this.handleForm}
-          />
-          <div className='service-submit'>
+      // <IconSettings iconPath="">
+      <div className='service-form'>
+        <PageHeader title='Request Service'/>
+        {this.renderNotifications()}
+        <Dropdown
+          className='service-dropdown'
+          tabIndex='-1'
+          options={dropdownOptions}
+          onSelect={(service_name) => this.updateSelection(service_name)}
+        >
+          <DropdownTrigger className='service-dropdown'>
             <Button
-              className='service-submit-button'
-              label='Submit'
-              variant='brand'
-              onClick={(e) => this.handleSubmit(e)}
+              iconCategory='utility'
+              iconName='down'
+              iconPosition='right'
+              label={dropdownText}
+              value={service && service.label}
             />
-          </div>
+          </DropdownTrigger>
+        </Dropdown>
+        <FormBuilder 
+          formFields={formFields}
+          handleForm={this.handleForm}
+        />
+        <div className='service-submit'>
+          <Button
+            className='service-submit-button'
+            label='Submit'
+            variant='brand'
+            onClick={(e) => this.handleSubmit(e)}
+          />
         </div>
-      </IconSettings>
+      </div>
+      // </IconSettings>
     )
   }
 }

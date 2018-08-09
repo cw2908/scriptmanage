@@ -7,7 +7,6 @@ module Pservices
   # => test/pservices_test.rb
   def list_services
     [
-      
     ] << Pservices::ExampleService unless Rails.env.production?
   end
 

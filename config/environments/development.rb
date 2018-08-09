@@ -50,6 +50,9 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
   # number of complex assets.
   config.assets.debug = true
 
+  # compress svgs
+  config.assets.css_compressor = :sass
+
   # Suppress logger output for asset requests.
   config.assets.quiet = false
 
@@ -62,7 +65,7 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # config.logger = Logger.new(STDOUT)
+  config.logger = Logger.new(STDOUT)
 
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
