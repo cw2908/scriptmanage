@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
-import {Input, Dropdown, DropdownTrigger, Button, Datepicker} from "@salesforce/design-system-react"
+import {Input, Dropdown, DropdownTrigger, Button, Datepicker, Textarea} from "@salesforce/design-system-react"
 
 
 
@@ -15,7 +15,6 @@ class FormBuilder extends Component {
   }
 
   updateSelection(selected, fieldName){
-    console.log({selected})
     let obj = {}
     obj[fieldName] = selected
     this.setState({selections: {...this.state.selections, ...obj}})
@@ -36,12 +35,11 @@ class FormBuilder extends Component {
         onChange={(e) => handleForm(e.target.value, fieldName)}
       />,
       select: <Dropdown
-        className='service-dropdown'
         tabIndex='-1'
         options={f.options}
         onSelect={(selection) => this.updateSelection(selection, fieldName)}
       >
-        <DropdownTrigger className='service-dropdown'>
+        <DropdownTrigger className='service-form-dropdown-trigger'>
           <Button
             iconCategory='utility'
             iconName='down'
@@ -55,12 +53,18 @@ class FormBuilder extends Component {
         id={fieldName}
         onChange={(event, data) => handleForm(data.date, fieldName)}
       />,
+      textarea: <Textarea 
+        id={fieldName} 
+        label={f.label}
+      />,
     }
 
 
-
+    const outerDivClass = `service-form-${f.form_type}`
     return (
-      <div key={f.name}>{formMapper[f.form_type]}</div>
+      <div className={outerDivClass}>
+        {formMapper[f.form_type]}
+      </div>
     )
   }
 

@@ -2,7 +2,7 @@ module Pservices
   module <%= name.singularize.camelcase %>
     @samanage = Samanage::Api.new(token: ENV['ACCOUNT_TOKEN'])
     @options = {
-      self: self.to_s
+      service_name: self.to_s
     }
     def describe
       {

@@ -111,9 +111,25 @@
 }
 
 .service-submit-button {
+  margin-top: 2em;
   max-width: 30em;
 }
 
 .service-notification {
   margin: 4em auto;
+}
+
+
+.service-form-input,
+.service-form-date,
+.service-form-select,
+.service-form-textarea {
+  max-width: 80%;
+  margin: 0.5em auto;
+  position: relative;
+}
+
+
+#service-options{
+  padding: 0 2em;
 }
