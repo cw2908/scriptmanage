@@ -69,7 +69,7 @@ class FormBuilder extends Component {
   }
 
   render() {
-    const {formFields} = this.props
+    const {formFields} = this.props || []
     return (
       <div id='service-options'>
         {formFields.map((f) => this.renderField(f))}
