@@ -16,7 +16,7 @@ module Pservices
     end
 
     def enabled
-      true
+      !Rails.env.production?
     end
 
     def display_name

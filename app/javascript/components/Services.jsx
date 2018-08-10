@@ -70,40 +70,40 @@ class Services extends Component {
     const dropdownText = service && service.label || "Select"
     const formFields = service ? [...JSON.parse(service.form_fields)] : []
     return (
-      // <IconSettings iconPath="">
-      <div className='service-form'>
-        <PageHeader title='Request Service'/>
-        {this.renderNotifications()}
-        <Dropdown
-          className='service-dropdown'
-          tabIndex='-1'
-          options={dropdownOptions}
-          onSelect={(service_name) => this.updateSelection(service_name)}
-        >
-          <DropdownTrigger className='service-dropdown'>
-            <Button
-              iconCategory='utility'
-              iconName='down'
-              iconPosition='right'
-              label={dropdownText}
-              value={service && service.label}
-            />
-          </DropdownTrigger>
-        </Dropdown>
-        <FormBuilder 
-          formFields={formFields}
-          handleForm={this.handleForm}
-        />
-        <div className='service-submit'>
-          <Button
-            className='service-submit-button'
-            label='Submit'
-            variant='brand'
-            onClick={(e) => this.handleSubmit(e)}
+      <IconSettings iconPath="assets/icons">
+        <div className='service-form'>
+          <PageHeader title='Request Service'/>
+          {this.renderNotifications()}
+          <Dropdown
+            className='service-dropdown'
+            tabIndex='-1'
+            options={dropdownOptions}
+            onSelect={(service_name) => this.updateSelection(service_name)}
+          >
+            <DropdownTrigger className='service-dropdown'>
+              <Button
+                iconCategory='utility'
+                iconName='down'
+                iconPosition='right'
+                label={dropdownText}
+                value={service && service.label}
+              />
+            </DropdownTrigger>
+          </Dropdown>
+          <FormBuilder 
+            formFields={formFields}
+            handleForm={this.handleForm}
           />
+          <div className='service-submit'>
+            <Button
+              className='service-submit-button'
+              label='Submit'
+              variant='brand'
+              onClick={(e) => this.handleSubmit(e)}
+            />
+          </div>
         </div>
-      </div>
-      // </IconSettings>
+      </IconSettings>
     )
   }
 }
