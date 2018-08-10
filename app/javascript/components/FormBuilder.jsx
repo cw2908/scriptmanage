@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import {Input, Dropdown, DropdownTrigger, Button, Datepicker, Textarea} from "@salesforce/design-system-react"
-
+import FileUpload from "./FileUpload"
 
 
 
@@ -22,12 +22,6 @@ class FormBuilder extends Component {
     this.props.handleForm(selected.value, fieldName)
   }
 
-  handleCsv(event) {
-    this.setState({
-      csv: event.target.files[0]
-    })
-  }
-
 
 
   
@@ -39,7 +33,7 @@ class FormBuilder extends Component {
   
   
   renderField(f) {
-    const {handleForm} = this.props
+    const {handleForm, handleCsv} = this.props
     const fieldName = f.name
     const currentSelection = this.state.selections[fieldName]
     const dropdownLabel = currentSelection && currentSelection.label || f.label
@@ -110,7 +104,7 @@ class FormBuilder extends Component {
       file: <FileUpload 
         csv={this.state.csv}
         required={f.required}
-        handleCsv={() => this.handleCsv()}
+        handleCsv={() => handleCsv()}
       />
     }
 
