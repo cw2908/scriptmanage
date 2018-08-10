@@ -2,7 +2,7 @@ module Pservices
   class FormField
     attr_accessor :name, :form_type, :value_type, :options, :required, :default, :label
     # :name         => Field Name
-    # :form_type    => (input, text_area, select)
+    # :form_type    => (input, text_area, select, file)
     # :value_type   => value type (string?)
     # :options      => options for select types
     # :required     => boolean

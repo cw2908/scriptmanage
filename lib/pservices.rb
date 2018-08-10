@@ -7,6 +7,7 @@ module Pservices
   # => test/pservices_test.rb
   def list_services
     [
+			Pservices::UserSync,
       Pservices::ExampleService,
     ] 
   end

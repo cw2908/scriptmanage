@@ -128,6 +128,7 @@ class Services extends Component {
             formFields={formFields}
             handleForm={this.handleForm}
             handleTimeComparison={this.handleTimeComparison}
+            handleCsv={this.handleCsv}
           />
           <div className='service-submit'>
             <Button
