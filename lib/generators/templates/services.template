@@ -9,10 +9,11 @@ module Pservices
     ]
     def describe
       {
-        name: '<%= name.camelcase %>',
+        name: '<%= name %>',
+        service_name: '<%= name.camelcase %>',
         description: 'Here to make sure that tests work',
         required_input_fields: [],
-        form_fields: @form_fields.to_json
+        form_fields: @form_fields.to_json,
         expected_output: "Some FIle",
         account: nil,
       }

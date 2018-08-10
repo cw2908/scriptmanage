@@ -62,6 +62,40 @@ class Services extends Component {
       : null)
   }
 
+
+  handleTimeComparison(e, name) {
+    let obj = {}
+    const targetName = e.target.name
+    obj[targetName] = e.target.value
+    console.log()
+    // Create updated Configuration JSON
+    const untimedForm = {
+      ...this.state.form,
+      ...obj,
+    }
+    console.log({ untimedForm})
+
+    let time_comparison = {}
+    // Interpolate Time Values from Newly Updated JSON
+    
+
+
+    if (/trigger/.test(name)) {
+      time_comparison["trigger_comparison"] = `${untimedForm.trigger_comparison_time_value}.${untimedForm.trigger_comparison_time_unit || "days"}.ago`
+    } 
+    else if (/requester/.test(name)) {
+      time_comparison["requester_comparison"] = `${untimedForm.requester_comparison_time_value}.${untimedForm.requester_comparison_time_unit || "days"}.ago`
+    }
+    console.log({ time_comparison})
+    const timedForm = {
+      ...untimedForm,
+      ...time_comparison
+    }  
+    // Send to state
+    this.setState({ form: timedForm})
+  }
+
+
   render() {
     const service = this.state.service
     const {availableServices} = this.props
@@ -93,6 +127,7 @@ class Services extends Component {
           <FormBuilder 
             formFields={formFields}
             handleForm={this.handleForm}
+            handleTimeComparison={this.handleTimeComparison}
           />
           <div className='service-submit'>
             <Button

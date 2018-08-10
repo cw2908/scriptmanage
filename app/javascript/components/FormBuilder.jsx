@@ -12,6 +12,7 @@ class FormBuilder extends Component {
     this.state = {
       selections: {}
     }
+    this.handleCsv = this.handleCsv.bind(this)
   }
 
   updateSelection(selected, fieldName){
@@ -21,7 +22,11 @@ class FormBuilder extends Component {
     this.props.handleForm(selected.value, fieldName)
   }
 
-
+  handleCsv(event) {
+    this.setState({
+      csv: event.target.files[0]
+    })
+  }
 
 
 
@@ -100,8 +105,13 @@ class FormBuilder extends Component {
               value={dropdownValue}
             />
           </DropdownTrigger>
-        </Dropdown>,
+        </Dropdown>
       </div>,
+      file: <FileUpload 
+        csv={this.state.csv}
+        required={f.required}
+        handleCsv={() => this.handleCsv()}
+      />
     }
 
 
@@ -126,6 +136,8 @@ class FormBuilder extends Component {
 FormBuilder.propTypes = {
   handleForm: PropTypes.func.isRequired,
   formFields: PropTypes.array.isRequired,
+  handleTimeComparison: PropTypes.func.isRequired,
+  handleCsv: PropTypes.func.isRequired,
 }
 
 export default FormBuilder
