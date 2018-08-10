@@ -133,3 +133,7 @@
 #service-options{
   padding: 0 2em;
 }
+
+.services-stopwatch {
+  display: flex
+}

@@ -39,8 +39,8 @@ class FormBuilder extends Component {
     const currentSelection = this.state.selections[fieldName]
     const dropdownLabel = currentSelection && currentSelection.label || f.label
     const dropdownValue = currentSelection && currentSelection.value
-    const unit_name =  `${f.name}_time_unit`
-    const value_name =  `${f.name}_time_value`  
+    const unitName =  `${f.name}_time_unit`
+    const valueName =  `${f.name}_time_value`  
     const formMapper = {
       input: <Input 
         id={fieldName}
@@ -71,14 +71,37 @@ class FormBuilder extends Component {
         id={fieldName} 
         label={f.label}
       />,
-      stopwatch: <FieldSet key={f.name}>
-        <Row>
-          <Input name={value_name} onChange={(e) => { this.props.handleChange(e); this.props.handleTimeComparison(e, value_name)}} style={Styles.servicesInput} label={f.label} value={namedFieldState} placeholder={f.default} required={f.required}></Input>,
-          <Select name={unit_name} onChange={(e) => { this.props.handleChange(e); this.props.handleTimeComparison(e, unit_name)}} style={Styles.servicesSelect} label={f.label} value={namedFieldState} required={f.required} placeholder={f.default}>
-            {f.options.map((o) => { return <Option key={o}>{o}</Option> })}
-          </Select>
-        </Row>
-      </FieldSet>,
+      stopwatch: <div className='services-stopwatch'>
+        <Input 
+          id={fieldName}
+          label={f.label}
+          placeholder={f.default} 
+          required={f.required}
+          onChange={(e) => { 
+            handleForm(e.target.value, fieldName) 
+            handleTimeComparison(e, valueName)
+          }} 
+        />
+        <Dropdown
+          tabIndex='-1'
+          options={f.options}
+          onSelect={(selection) => {
+            // handleTimeComaprison(selection, fieldName)
+            // updateSelection(selection, fieldName)
+            handleForm(selection, fieldName)
+          }}
+        >
+          <DropdownTrigger className='service-form-dropdown-trigger'>
+            <Button
+              iconCategory='utility'
+              iconName='down'
+              iconPosition='right'
+              label={dropdownLabel}
+              value={dropdownValue}
+            />
+          </DropdownTrigger>
+        </Dropdown>,
+      </div>,
     }
 
 
