@@ -15,6 +15,10 @@ module Pservices
       @options[:service_name]
     end
 
+    def enabled
+      true
+    end
+
     def display_name
       'Example Service'
     end
@@ -26,7 +30,7 @@ module Pservices
         form_fields: @form_fields.to_json,
         description: 'Here to make sure that tests work',
         required_input_fields: [],
-        expected_output: "Some FIle",
+        expected_output: "Some File",
         account: nil,
       }
     end
@@ -42,6 +46,6 @@ module Pservices
     end
 
 
-    module_function :describe, :pre_run, :run, :service_name, :display_name
+    module_function :describe, :pre_run, :run, :service_name, :display_name, :enabled
   end
 end
