@@ -12,6 +12,7 @@ class FormBuilder extends Component {
     this.state = {
       selections: {}
     }
+    this.handleCsv = this.handleCsv.bind(this)
   }
 
   updateSelection(selected, fieldName){
@@ -21,12 +22,30 @@ class FormBuilder extends Component {
     this.props.handleForm(selected.value, fieldName)
   }
 
+  handleCsv(event) {
+    this.setState({
+      csv: event.target.files[0]
+    })
+  }
+
+
+
+  
+  
+  
+  
+
+
+  
+  
   renderField(f) {
     const {handleForm} = this.props
     const fieldName = f.name
     const currentSelection = this.state.selections[fieldName]
     const dropdownLabel = currentSelection && currentSelection.label || f.label
     const dropdownValue = currentSelection && currentSelection.value
+    const unitName =  `${f.name}_time_unit`
+    const valueName =  `${f.name}_time_value`  
     const formMapper = {
       input: <Input 
         id={fieldName}
@@ -57,6 +76,42 @@ class FormBuilder extends Component {
         id={fieldName} 
         label={f.label}
       />,
+      stopwatch: <div className='services-stopwatch'>
+        <Input 
+          id={fieldName}
+          label={f.label}
+          placeholder={f.default} 
+          required={f.required}
+          onChange={(e) => { 
+            handleForm(e.target.value, fieldName) 
+            handleTimeComparison(e, valueName)
+          }} 
+        />
+        <Dropdown
+          tabIndex='-1'
+          options={f.options}
+          onSelect={(selection) => {
+            // handleTimeComaprison(selection, fieldName)
+            // updateSelection(selection, fieldName)
+            handleForm(selection, fieldName)
+          }}
+        >
+          <DropdownTrigger className='service-form-dropdown-trigger'>
+            <Button
+              iconCategory='utility'
+              iconName='down'
+              iconPosition='right'
+              label={dropdownLabel}
+              value={dropdownValue}
+            />
+          </DropdownTrigger>
+        </Dropdown>
+      </div>,
+      file: <FileUpload 
+        csv={this.state.csv}
+        required={f.required}
+        handleCsv={() => this.handleCsv()}
+      />
     }
 
 
@@ -81,6 +136,8 @@ class FormBuilder extends Component {
 FormBuilder.propTypes = {
   handleForm: PropTypes.func.isRequired,
   formFields: PropTypes.array.isRequired,
+  handleTimeComparison: PropTypes.func.isRequired,
+  handleCsv: PropTypes.func.isRequired,
 }
 
 export default FormBuilder

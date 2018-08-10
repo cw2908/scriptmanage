@@ -62,6 +62,40 @@ class Services extends Component {
       : null)
   }
 
+
+  handleTimeComparison(e, name) {
+    let obj = {}
+    const targetName = e.target.name
+    obj[targetName] = e.target.value
+    console.log()
+    // Create updated Configuration JSON
+    const untimedForm = {
+      ...this.state.form,
+      ...obj,
+    }
+    console.log({ untimedForm})
+
+    let time_comparison = {}
+    // Interpolate Time Values from Newly Updated JSON
+    
+
+
+    if (/trigger/.test(name)) {
+      time_comparison["trigger_comparison"] = `${untimedForm.trigger_comparison_time_value}.${untimedForm.trigger_comparison_time_unit || "days"}.ago`
+    } 
+    else if (/requester/.test(name)) {
+      time_comparison["requester_comparison"] = `${untimedForm.requester_comparison_time_value}.${untimedForm.requester_comparison_time_unit || "days"}.ago`
+    }
+    console.log({ time_comparison})
+    const timedForm = {
+      ...untimedForm,
+      ...time_comparison
+    }  
+    // Send to state
+    this.setState({ form: timedForm})
+  }
+
+
   render() {
     const service = this.state.service
     const {availableServices} = this.props
@@ -70,40 +104,41 @@ class Services extends Component {
     const dropdownText = service && service.label || "Select"
     const formFields = service ? [...JSON.parse(service.form_fields)] : []
     return (
-      // <IconSettings iconPath="">
-      <div className='service-form'>
-        <PageHeader title='Request Service'/>
-        {this.renderNotifications()}
-        <Dropdown
-          className='service-dropdown'
-          tabIndex='-1'
-          options={dropdownOptions}
-          onSelect={(service_name) => this.updateSelection(service_name)}
-        >
-          <DropdownTrigger className='service-dropdown'>
-            <Button
-              iconCategory='utility'
-              iconName='down'
-              iconPosition='right'
-              label={dropdownText}
-              value={service && service.label}
-            />
-          </DropdownTrigger>
-        </Dropdown>
-        <FormBuilder 
-          formFields={formFields}
-          handleForm={this.handleForm}
-        />
-        <div className='service-submit'>
-          <Button
-            className='service-submit-button'
-            label='Submit'
-            variant='brand'
-            onClick={(e) => this.handleSubmit(e)}
+      <IconSettings iconPath="assets/icons">
+        <div className='service-form'>
+          <PageHeader title='Request Service'/>
+          {this.renderNotifications()}
+          <Dropdown
+            className='service-dropdown'
+            tabIndex='-1'
+            options={dropdownOptions}
+            onSelect={(service_name) => this.updateSelection(service_name)}
+          >
+            <DropdownTrigger className='service-dropdown'>
+              <Button
+                iconCategory='utility'
+                iconName='down'
+                iconPosition='right'
+                label={dropdownText}
+                value={service && service.label}
+              />
+            </DropdownTrigger>
+          </Dropdown>
+          <FormBuilder 
+            formFields={formFields}
+            handleForm={this.handleForm}
+            handleTimeComparison={this.handleTimeComparison}
           />
+          <div className='service-submit'>
+            <Button
+              className='service-submit-button'
+              label='Submit'
+              variant='brand'
+              onClick={(e) => this.handleSubmit(e)}
+            />
+          </div>
         </div>
-      </div>
-      // </IconSettings>
+      </IconSettings>
     )
   }
 }
