@@ -12,7 +12,6 @@ class FormBuilder extends Component {
     this.state = {
       selections: {}
     }
-    this.handleCsv = this.handleCsv.bind(this)
   }
 
   updateSelection(selected, fieldName){
@@ -32,7 +31,8 @@ class FormBuilder extends Component {
 
   
   
-  renderField(f) {
+  renderField(f, index) {
+    console.log({f}, {index})
     const {handleForm, handleCsv} = this.props
     const fieldName = f.name
     const currentSelection = this.state.selections[fieldName]
@@ -102,16 +102,18 @@ class FormBuilder extends Component {
         </Dropdown>
       </div>,
       file: <FileUpload 
+        csvFieldName={f.name}
         csv={this.state.csv}
         required={f.required}
-        handleCsv={() => handleCsv()}
+        handleCsv={handleCsv}
       />
     }
 
 
     const outerDivClass = `service-form-${f.form_type}`
+    const key = `${f.form_type}-${index}`
     return (
-      <div className={outerDivClass}>
+      <div className={outerDivClass} key={key}>
         {formMapper[f.form_type]}
       </div>
     )
@@ -121,7 +123,7 @@ class FormBuilder extends Component {
     const {formFields} = this.props || []
     return (
       <div id='service-options'>
-        {formFields.map((f) => this.renderField(f))}
+        {formFields.map((f, index) => this.renderField(f, index))}
       </div>
     )
   }

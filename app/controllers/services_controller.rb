@@ -38,7 +38,7 @@ class ServicesController < ApplicationController
     }.flatten
 
     puts "service_option_params: #{service_option_params.inspect}"
-    params.require(:service).permit(:service_name, options: service_option_params)
+    params.require(:service,:csv,:authenticity_token).permit(:service_name, options: service_option_params)
   end
 
 end

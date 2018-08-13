@@ -15,6 +15,7 @@ class Services extends Component {
     this.updateSelection = this.updateSelection.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleForm = this.handleForm.bind(this)
+    this.handleCsv = this.handleCsv.bind(this)
   }
 
   updateSelection(value) {
@@ -26,8 +27,15 @@ class Services extends Component {
       message: data.message || data.data.message,
       status_code: data.status || data.response && data.response.status,
       service: null,
+      csv: null,
       form: {}
     })
+  }
+
+  handleCsv(event, csvFieldName) {
+    let obj = {}
+    obj[csvFieldName] = event.target.files[0]
+    this.setState({csv: event.target.files[0]})
   }
 
   handleForm(e, fieldName) {
@@ -38,6 +46,9 @@ class Services extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
+
+    let formData = new FormData()
+
     const params = {
       service: {
         service_name: this.state.service && this.state.service.service_name,
@@ -45,8 +56,18 @@ class Services extends Component {
       },
       authenticity_token: this.props.authenticityToken
     }
+    formData.append("service_name", this.state.service && this.state.service.service_name)
+    formData.append("options", JSON.stringify({...this.state.form}))
+    formData.append("authenticity_token", this.props.authenticityToken)
+    formData.append("csv", this.state.csv)
+
+    console.log({formData})
     axios
-      .post("./services",params)
+      .post("./services",formData,{
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
       .then(data => this.reInit(data))
       .catch(data => this.reInit(data))
   }
@@ -73,7 +94,8 @@ class Services extends Component {
       ...this.state.form,
       ...obj,
     }
-    console.log({ untimedForm})
+    
+    ({ untimedForm})
 
     let time_comparison = {}
     // Interpolate Time Values from Newly Updated JSON

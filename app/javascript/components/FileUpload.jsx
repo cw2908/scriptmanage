@@ -10,25 +10,21 @@ export default class FileUpload extends Component {
       selectedFile: null,
       ...props
     }
-    this.fileSelectedHandler = this.fileSelectedHandler.bind(this)
-  }
-
-  fileSelectedHandler(event) {
-    this.props.handleCsv(event)
   }
 
   render () {
-    const {csvRequired} = this.props
+    const {csvRequired, csvFieldName, handleCsv} = this.props
     return (
       <div>
         <label htmlFor="csvFile">Select File</label>
-        <input id="csvFile" ref={(fileInput) => this.csv = fileInput} type="file" multiple={false} onChange={this.fileSelectedHandler} required={csvRequired} />
+        <input id="csvFile" ref={(fileInput) => this.csv = fileInput} type="file" multiple={false} onChange={(e) => handleCsv(e, csvFieldName)} required={csvRequired} />
       </div>
     )
   }
 }
 
 FileUpload.propTypes = {
+  csvFieldName: PropTypes.string.isRequired,
   csv: PropTypes.object,
   csvRequired: PropTypes.bool,
   handleCsv: PropTypes.func.isRequired,

@@ -15,6 +15,7 @@ module Pservices
     def describe
       {
         name: 'Sync Users',
+        service_name: @options[:service_name],
         description: 'Sync users and assigns assets',
         required_input_fields: [],
         form_fields: @form_fields.to_json,
