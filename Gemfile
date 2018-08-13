@@ -47,6 +47,10 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 
+gem 'paperclip'
+
+gem 'aws-sdk', '~> 2.3'
+
 
 
 # Use Capistrano for deployment
