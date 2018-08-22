@@ -11,15 +11,15 @@ default: &default
 
 development:
   <<: *default
-  database: scriptmanage_development
+  database: scriptmanage_flatiron_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: scriptmanage_test
+  database: scriptmanage_flatiron_test
 
 production:
   <<: *default
-  database: scriptmanage_production
+  database: scriptmanage_flatiron_production

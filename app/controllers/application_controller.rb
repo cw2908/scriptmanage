@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
   before_action :authenticate_user!
-
+	helper_method :logged_in?
 
   def index
-    current_user
+    @auth_token = form_authenticity_token
+    @available_services = Pservices.list_services
+      .select{|s| s.enabled}
+      .map(&:describe)
+  end
+
+  def logged_in?
+    current_user != nil
   end
 
 

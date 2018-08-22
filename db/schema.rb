@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180808174223) do
+ActiveRecord::Schema.define(version: 20180822173706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "settings", force: :cascade do |t|
+    t.boolean "email_alerts"
+    t.text "samanage_api_token"
+    t.text "webhook_token"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_settings_on_user_id", unique: true
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.string "attachment_type", null: false
+    t.string "file_file_name", null: false
+    t.string "file_content_type", null: false
+    t.bigint "file_file_size", null: false
+    t.datetime "file_updated_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,4 +55,5 @@ ActiveRecord::Schema.define(version: 20180808174223) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "settings", "users"
 end
