@@ -18,8 +18,8 @@ class AuthorizeApiRequest
   end
   def user
     begin
-      if auth_token
-        @user ||= User.find(auth_token) 
+      if auth_user
+        @user ||= auth_user
         @status = 200
       else
         @status = 404
@@ -30,10 +30,10 @@ class AuthorizeApiRequest
     end
   end
 
-  def auth_token
-    puts "http_auth_header: #{http_auth_header.inspect}"
-    @auth_token ||= Setting.find_by(webhook_token: http_auth_header) && Setting.find_by(webhook_token: http_auth_header).user
-    # @auth_token ||= JsonWebToken.decode(http_auth_header)
+  def auth_user
+    if Setting.find_by(webhook_token: http_auth_header) 
+      @auth_user ||= User.find(Setting.find_by(webhook_token: http_auth_header).user_id)
+    end
   end
 
   def http_auth_header
