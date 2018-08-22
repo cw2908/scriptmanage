@@ -1,0 +1,24 @@
+<div id='login-container'>
+  <div id='login-form'>
+    <div class='login-form-box'>
+      <div class='login-header'>
+        <h2 class='slds-page-header__title slds-align-middle'>Reset Password</h2>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="sld-form-element field">
+            <%= f.label :email, class: 'slds-form-element__label slds-text-color_inverse' %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control slds-input last-item-spacer'%>
+          </div>
+
+          <div class="login-actions">
+            <%= f.submit "Send me reset password instructions", class: 'login-button slds-button slds-button_brand'%>
+          </div>
+          <%= render "devise/shared/links" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

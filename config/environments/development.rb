@@ -50,8 +50,13 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
   # number of complex assets.
   config.assets.debug = true
 
+  # compress svgs
+  config.assets.css_compressor = :sass
+
   # Suppress logger output for asset requests.
-  config.assets.quiet = true
+  config.assets.quiet = false
+
+  config.assets.compile = true
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
@@ -60,6 +65,10 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.logger = Logger.new(STDOUT)
+
+
+
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
@@ -67,5 +76,15 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
     :password             => ENV.fetch('GOOGLE_APP_KEY'),
     :authentication       => "plain",
     :enable_starttls_auto => true
+  }
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV.fetch('S3_BUCKET_NAME'),
+      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+      s3_region: ENV.fetch('AWS_REGION'),
+    }
   }
 end

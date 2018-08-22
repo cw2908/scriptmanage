@@ -7,4 +7,16 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-console.log('Hello World from Webpacker')
+
+import ReactOnRails from "react-on-rails"
+import Services from "../components/Services"
+import Notification from "../components/Notification"
+import FormBuilder from "../components/FormBuilder"
+
+
+// This is how react_on_rails can see the HelloWorld in the browser.
+ReactOnRails.register({
+  Services,
+  Notification,
+  FormBuilder
+})
