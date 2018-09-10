@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 
   def index
-    current_user
+
   end
 
 

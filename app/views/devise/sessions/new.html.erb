@@ -2,6 +2,9 @@
   <div id='login-form'>
     <div class='login-form-box'>
       <div class='login-header'>
+        <% flash.each do |key, value| %>
+          <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info"<%= key %>"><%= value %></div>
+        <% end %>
         <h2 class='slds-page-header__title slds-truncate slds-align-middle'>Services</h2>
       </div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

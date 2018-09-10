@@ -1,6 +1,5 @@
 class ServicesController < ApplicationController
   def index
-    puts current_user.inspect
     @auth_token = form_authenticity_token
     @available_services = Pservices.list_services
       .select{|s| s.enabled}

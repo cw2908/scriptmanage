@@ -1,7 +1,9 @@
 require 'resque_web'
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   root to: 'services#index'
   get '/services',          to: 'services#index'
   post '/services',         to: 'services#create', :defaults => { :format => :json }
