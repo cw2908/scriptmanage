@@ -4,14 +4,6 @@ class ApplicationController < ActionController::Base
 	helper_method :logged_in?
 
   def index
-    @auth_token = form_authenticity_token
-    @available_services = Pservices.list_services
-      .select{|s| s.enabled}
-      .map(&:describe)
-  end
-
-  def logged_in?
-    current_user != nil
   end
 
 

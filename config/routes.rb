@@ -1,7 +1,9 @@
 require 'resque_web'
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   defaults format: :json do
     scope module: :api, defaults: {format: :json}, path: 'api' do 
       scope module: :v1 do

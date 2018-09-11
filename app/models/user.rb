@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  has_one :setting, dependent: :destroy
+  after_create :user_creation_alert
   after_create :initialize_settings
+  has_one :setting, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,6 +14,13 @@ class User < ApplicationRecord
     super && approved? 
   end 
 
+  def user_creation_alert
+    if Rails.env.production? || Rails.env.development?
+      puts "Sending User Alert for #{self.email}"
+      ApplicationMailer.admin_approval(email: self.email).deliver_now
+    end
+  end
+  
   def initialize_settings
     self.setting = Setting.create!(user_id: self.id)
     self.approved = true if !Rails.env.production?

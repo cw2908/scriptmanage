@@ -50,12 +50,18 @@
 
 
 .login-header>h2 {
+  padding-top: 10px;
   padding-bottom: 10px;
   font-size: 3em;
   vertical-align: middle;
+  text-align:center;
   margin: 0 auto 1em auto;
   max-width: 40%;
   color: white;
+}
+
+#error_explanation{
+  margin-bottom: 2em;
 }
 
 .slds-form-element>input.form-control {
