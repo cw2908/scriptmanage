@@ -47,8 +47,7 @@ class Services extends Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    let formData = new FormData()
-
+    
     const params = {
       service: {
         service_name: this.state.service && this.state.service.service_name,
@@ -56,18 +55,18 @@ class Services extends Component {
       },
       authenticity_token: this.props.authenticityToken
     }
-    formData.append("service_name", this.state.service && this.state.service.service_name)
-    formData.append("options", JSON.stringify({...this.state.form}))
-    formData.append("authenticity_token", this.props.authenticityToken)
-    formData.append("csv", this.state.csv)
+    // Use this block to instead send multipart data
+    // let formData = new FormData()
+    // formData.append("service_name", this.state.service && this.state.service.service_name)
+    // formData.append("options", JSON.stringify({...this.state.form}))
+    // formData.append("authenticity_token", this.props.authenticityToken)
+    // formData.append("csv", this.state.csv)
+    // let headers = {
+    //   "Content-Type": "multipart/form-data"
+    // }
 
-    console.log({formData})
     axios
-      .post("./services",formData,{
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
+      .post("api/services",params)
       .then(data => this.reInit(data))
       .catch(data => this.reInit(data))
   }
@@ -88,8 +87,6 @@ class Services extends Component {
     let obj = {}
     const targetName = e.target.name
     obj[targetName] = e.target.value
-    console.log()
-    // Create updated Configuration JSON
     const untimedForm = {
       ...this.state.form,
       ...obj,
