@@ -9,6 +9,7 @@ Clone this repo to generate a new rails app preconfigured for easy Samanage inte
 - Postgres
 - Devise
 - Resque
+- Redis
 - React w/ Salesforce Lightning Components
 - AWS (S3 file storage)
 - NodeJS (use `yarn install` for webpack and node modules)
@@ -52,6 +53,7 @@ production:
   ## Heroku addons set REDIS_KEY
   ## Set this only if manually configuring redis
   # REDIS_URL: ''
-  
 ```
+When developing locally rename the Rails application module name. Redis namespace will be prefixed by `Rails.application.class.parent_name`
+
 * May need to set `config.assets.compile = true` for Heroku https://devcenter.heroku.com/articles/rails-asset-pipeline#compile-set-to-true-in-production (assets are precompiled by default)
