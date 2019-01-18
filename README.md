@@ -39,6 +39,19 @@ Run tests with `bundle exec guard`
 Set all required environment keys in `config/initializers/figaro.rb`
 If keys are saved locally in `config/application.yml` (do not commit this file) they can be published with: `figaro heroku:set -e production`
 
-![config/application.yml](./application_yaml.png)
-
+`config/application.yml`
+```yaml
+test:
+  REDIS_URL: redis://localhost:6379
+  ACCOUNT_TOKEN: 'Sandbox-API-Token'
+development:
+  REDIS_URL: redis://localhost:6379
+  ACCOUNT_TOKEN: 'Sandbox-API-Token'
+production:
+  ACCOUNT_TOKEN: 'API_TOKEN_HERE'
+  ## Heroku addons set REDIS_KEY
+  ## Set this only if manually configuring redis
+  # REDIS_URL: ''
+  
+```
 * May need to set `config.assets.compile = true` for Heroku https://devcenter.heroku.com/articles/rails-asset-pipeline#compile-set-to-true-in-production (assets are precompiled by default)
