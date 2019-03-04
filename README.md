@@ -54,6 +54,6 @@ production:
   ## Set this only if manually configuring redis
   # REDIS_URL: ''
 ```
-When developing locally rename the Rails application module name. Redis namespace will be prefixed by `Rails.application.class.parent_name`
+When developing locally rename the Rails application module name. Resque namespace in Redis will be prefixed by `Rails.application.class.parent_name`
 
 * May need to set `config.assets.compile = true` for Heroku https://devcenter.heroku.com/articles/rails-asset-pipeline#compile-set-to-true-in-production (assets are precompiled by default)

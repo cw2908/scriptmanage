@@ -51,6 +51,12 @@ gem 'paperclip'
 
 gem 'aws-sdk', '~> 2.3'
 
+gem "rack", ">= 2.0.6"
+
+gem "nokogiri", ">= 1.8.5"
+
+gem "loofah", ">= 2.2.3"
+
 
 
 # Use Capistrano for deployment
