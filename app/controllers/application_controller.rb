@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   def index
   end
 
+  def logged_in?
+    current_user != nil
+  end
+
 
   protected
   # def authenticate
