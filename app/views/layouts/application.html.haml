@@ -2,7 +2,7 @@
 %html
   %head
     =favicon_link_tag 'S_Logo'
-    %title Scriptmanage
+    %title Solarwinds ITSM Services
     %meta{name: "viewport", content:"width=device-width, initial-scale=1, shrink-to-fit=no", charset:"utf-8"}
     =csrf_meta_tags
     =stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload'
@@ -12,10 +12,10 @@
   %body
     #app-content
       -if logged_in?
-        .slds-trial-header.slds-grid
-          .slds-text-align_center.slds-text-heading_large.slds-col.slds-size_1-of-4#services-header
-            Samanage Services
-            #services{authenticityToken: @auth_token.to_json, availableServices: @available_services.to_json}
+        .slds-trial-header.slds-grid#services-header
+          .slds-text-align_center.slds-text-heading_large.slds-col.slds-size_1-of-4
+            %strong Solarwinds ITSM Services
+            %div#services{authenticityToken: @auth_token.to_json, availableServices: @available_services.to_json}
               =yield
       -else
         =yield

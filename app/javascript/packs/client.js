@@ -9,9 +9,9 @@
 
 
 import ReactOnRails from "react-on-rails"
-import Services from "../components/Services"
-import Notification from "../components/Notification"
-import FormBuilder from "../components/FormBuilder"
+import Services from "../components/Services.jsx"
+import Notification from "../components/Notification.jsx"
+import FormBuilder from "../components/FormBuilder.jsx"
 
 
 // This is how react_on_rails can see the HelloWorld in the browser.

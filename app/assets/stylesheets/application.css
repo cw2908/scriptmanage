@@ -27,8 +27,8 @@
 
 
  #login-container {
-   background: url('SamanageBG.png');
    height: 100%;
+   background-color: #111111;
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
@@ -48,16 +48,18 @@
   /* padding: 2em; */
 }
 
-
+.login-header {
+  background-color: #111111;
+}
 .login-header>h2 {
-  padding-top: 10px;
+  padding-top: 17px;
   padding-bottom: 10px;
   font-size: 3em;
   vertical-align: middle;
   text-align:center;
-  margin: 0 auto 1em auto;
+  margin: 0 auto;
   max-width: 40%;
-  color: white;
+  color: #f99d1c;
 }
 
 #error_explanation{
@@ -79,6 +81,10 @@
 }
 
 #services-header {
+  padding-top: 4px;
+  padding-left: 3em;
+  background-color: #111111;
+  color: #f99d1c;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -142,4 +148,22 @@
 
 .services-stopwatch {
   display: flex
+}
+
+
+a {
+  color: #f99d1c !important;
+}
+
+.swsd-button {
+  color: white !important;
+  background-color: #f99d1c !important;
+  border-color:  #d88919 !important;
+}
+
+
+
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url("/assets/OpenSans-Regular.tff");
 }

@@ -135,6 +135,7 @@ class Services extends Component {
           >
             <DropdownTrigger className='service-dropdown'>
               <Button
+                className="swsd-button"
                 iconCategory='utility'
                 iconName='down'
                 iconPosition='right'
@@ -151,7 +152,7 @@ class Services extends Component {
           />
           <div className='service-submit'>
             <Button
-              className='service-submit-button'
+              className='service-submit-button swsd-button'
               label='Submit'
               variant='brand'
               onClick={(e) => this.handleSubmit(e)}

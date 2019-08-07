@@ -4,6 +4,8 @@ class ServicesController < ApplicationController
     @available_services = Pservices.list_services
       .select{|s| s.enabled}
       .map(&:describe)
+    puts "@available_services: #{@available_services}"
+    @available_services
   end
 
 

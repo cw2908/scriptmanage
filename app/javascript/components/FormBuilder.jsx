@@ -21,16 +21,6 @@ class FormBuilder extends Component {
     this.props.handleForm(selected.value, fieldName)
   }
 
-
-
-  
-  
-  
-  
-
-
-  
-  
   renderField(f, index) {
     console.log({f}, {index})
     const {handleForm, handleCsv} = this.props
@@ -54,6 +44,7 @@ class FormBuilder extends Component {
       >
         <DropdownTrigger className='service-form-dropdown-trigger'>
           <Button
+            className='swsd-button'
             iconCategory='utility'
             iconName='down'
             iconPosition='right'
@@ -92,6 +83,7 @@ class FormBuilder extends Component {
         >
           <DropdownTrigger className='service-form-dropdown-trigger'>
             <Button
+              className='swsd-button'
               iconCategory='utility'
               iconName='down'
               iconPosition='right'
