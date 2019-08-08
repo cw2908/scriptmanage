@@ -59,6 +59,8 @@ gem "nokogiri", ">= 1.8.5"
 
 gem "loofah", ">= 2.2.3"
 
+gem 'scout_apm'
+
 
 
 # Use Capistrano for deployment
