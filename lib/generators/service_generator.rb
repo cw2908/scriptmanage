@@ -5,8 +5,8 @@ class Rails::ServiceGenerator < Rails::Generators::NamedBase
 
   
   def create_services_file
-    template 'services.template', "lib/pservices/#{file_name}.rb"
-    template 'services_test.template', "test/pservices/#{file_name}_test.rb"
+    template 'services.template', "app/lib/pservices/#{file_name}.rb"
+    template 'services_test.template', "spec/pservices/#{file_name}_test.rb"
   end
 
   def append_services
@@ -15,7 +15,7 @@ class Rails::ServiceGenerator < Rails::Generators::NamedBase
     ['
   
     in_root do
-      gsub_file 'lib/pservices.rb', /(#{Regexp.escape(sentinel)})/mi do |match|
+      gsub_file 'app/lib/pservices.rb', /(#{Regexp.escape(sentinel)})/mi do |match|
         "#{match}\n\t\t\tPservices::#{name.camelcase},"
       end
     end

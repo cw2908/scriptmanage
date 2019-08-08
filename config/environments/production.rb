@@ -92,8 +92,8 @@ config.webpacker.check_yarn_integrity = false
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :user_name            => ENV.fetch('GOOGLE_APP_ID'),
-    :password             => ENV.fetch('GOOGLE_APP_KEY'),
+    :user_name            => ENV.fetch('GOOGLE_APP_ID'), # Use fetch to force ensure existence
+    :password             => ENV.fetch('GOOGLE_APP_KEY'), # Use fetch to force ensure existence
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
@@ -102,10 +102,10 @@ config.webpacker.check_yarn_integrity = false
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
-      bucket: ENV.fetch('S3_BUCKET_NAME'),
-      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
-      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-      s3_region: ENV.fetch('AWS_REGION'),
+      bucket: ENV['S3_BUCKET_NAME'],
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      s3_region: ENV['AWS_REGION'],
     }
   }
 

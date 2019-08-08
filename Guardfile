@@ -53,5 +53,5 @@ guard :rspec, cmd: "bundle exec rspec" do
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
 
-  watch(%r{^lib/(.+)\.rb$})                           { |m| "spec/lib/#{m[1]}_spec.rb" }
+  watch(%r{^app/lib/(.+)\.rb$})                           { |m| "spec/lib/#{m[1]}_spec.rb" }
 end
