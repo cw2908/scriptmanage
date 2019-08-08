@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   defaults format: :json do
     scope module: :api, defaults: {format: :json}, path: 'api' do 
       scope module: :v1 do
+        get '/webhooks',          to: 'webhooks#index'
         post '/webhooks',         to: 'webhooks#create'
-        post '/services',         to: 'services#create', :defaults => { :format => :json }
+        post '/services',         to: 'services#create'
         get '/services',          to: 'services#index'
       end
     end

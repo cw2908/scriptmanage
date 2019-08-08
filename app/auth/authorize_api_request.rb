@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class AuthorizeApiRequest
   def initialize(headers = {})
     @headers = headers
   end
-  
+
   def call
     {
       user: user,
@@ -10,35 +12,32 @@ class AuthorizeApiRequest
     }
   end
 
-  private 
-  
+  private
+
   attr_reader :headers
-  def status
-    @status
-  end
+  attr_reader :status
+
   def user
-    begin
-      if auth_user
-        @user ||= auth_user
-        @status = 200
-      else
-        @status = 404
-      end
-    rescue ActiveRecord::RecordNotFound => e
-      @user = nil
-      @status = 404
+    if auth_user
+      @user ||= auth_user
+      @status = 200
+    else
+      @status = 401
     end
+  rescue ActiveRecord::RecordNotFound => e
+    @user = nil
+    @status = 401
   end
 
   def auth_user
-    if Setting.find_by(webhook_token: http_auth_header) 
+    if Setting.find_by(webhook_token: http_auth_header)
       @auth_user ||= User.find(Setting.find_by(webhook_token: http_auth_header).user_id)
     end
   end
 
   def http_auth_header
     if headers['Authorization'].present?
-      return headers['Authorization'].split(' ').last
+      headers['Authorization'].split(' ').last
     end
   end
 end

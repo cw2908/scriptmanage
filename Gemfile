@@ -68,6 +68,8 @@ gem 'scout_apm'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
   gem 'awesome_print'
   gem 'byebug'
   gem 'rspec-rails'

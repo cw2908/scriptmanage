@@ -2,14 +2,14 @@
 
 require 'rails_helper'
 
-RSpec.describe 'API Authorization Handler', type: :request do
-  describe ':authorize_request before hook' do
-    it 'returns 401 if no auth header sent' do
+RSpec.describe 'Inbound Requests', type: :request do
+  describe 'index' do
+    it 'returns 401 if no auth sent' do
       get '/api/webhooks'
       expect(response.status).to eq(401)
     end
 
-    it 'renders 200 success for valid user token' do 
+    it 'renders success for valid user token' do 
       u = User.create!(email: "sample@example.com", password: 'Test0000000')
       headers = {'Authorization' => u.setting.webhook_token}
       get '/api/webhooks', params: {}, headers: headers
