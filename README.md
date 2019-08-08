@@ -13,7 +13,7 @@ Clone this repo to generate a new rails app preconfigured for easy Samanage inte
 - React w/ Salesforce Lightning Components
 - AWS (S3 file storage)
 - NodeJS (use `yarn install` for webpack and node modules)
-- Guard / Minitest
+- RSpec / Guard
  
  
  #### Features
@@ -28,7 +28,7 @@ Most features are optional and only added when used.
 ### Adding a service
 
 Generate new service with `rails g service <name>`
-This will copy service and test templates to `lib/pservices/` `test/pservices/`
+This will copy service and test templates to `lib/pservices/` `spec/pservices/`
 
 
 Run in Development with: `foreman start -f Procfile.dev`
@@ -44,15 +44,13 @@ If keys are saved locally in `config/application.yml` (do not commit this file) 
 ```yaml
 test:
   REDIS_URL: redis://localhost:6379
-  ACCOUNT_TOKEN: 'Sandbox-API-Token'
+  ACCOUNT_TOKEN: 'Test-API-Token'
 development:
   REDIS_URL: redis://localhost:6379
-  ACCOUNT_TOKEN: 'Sandbox-API-Token'
+  ACCOUNT_TOKEN: 'Dev-API-Token'
 production:
-  ACCOUNT_TOKEN: 'API_TOKEN_HERE'
-  ## Heroku addons set REDIS_KEY
-  ## Set this only if manually configuring redis
-  # REDIS_URL: ''
+  ACCOUNT_TOKEN: 'Ultra-Secret-API-Token'
+  ## Configure other Environment variables (heroku will overrule this file)
 ```
 When developing locally rename the Rails application module name. Resque namespace in Redis will be prefixed by `Rails.application.class.parent_name`
 

@@ -31,7 +31,9 @@ class AuthorizeApiRequest
 
   def auth_user
     if Setting.find_by(webhook_token: http_auth_header)
-      @auth_user ||= User.find(Setting.find_by(webhook_token: http_auth_header).user_id)
+      user_exists = User.find(Setting.find_by(webhook_token: http_auth_header).user_id)
+      user_approved = user_exists&.approved?
+      @auth_user ||= user_exists && user_approved
     end
   end
 
