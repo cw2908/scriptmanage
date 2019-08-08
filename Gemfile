@@ -64,9 +64,13 @@ gem "loofah", ">= 2.2.3"
 
 group :development, :test do
   gem 'awesome_print'
-  gem 'minitest-rails'
+  gem 'byebug'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
   gem 'guard'
-  gem 'guard-minitest', require: false
+  gem 'database_cleaner'
+   gem 'guard-rspec', require: false
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
