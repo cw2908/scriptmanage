@@ -71,7 +71,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'byebug'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'capybara'
   gem 'guard'
   gem 'database_cleaner'
