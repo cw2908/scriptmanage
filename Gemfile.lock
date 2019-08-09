@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/ctran/annotate_models.git
+  revision: 111640d077836ced23cfffb882c93e40968ab9d9
+  specs:
+    annotate (2.7.5)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 13.0)
+
+GIT
   remote: https://github.com/resque/resque.git
   revision: 2a03db682a41f47390412561ea8e7156a5d6a5fc
   ref: 2a03db682a41f47390412561ea8e7156a5d6a5fc
@@ -365,6 +373,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionview (>= 5.1.6.2)
+  annotate!
   awesome_print
   aws-sdk (~> 2.3)
   byebug
