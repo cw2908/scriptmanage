@@ -103,6 +103,8 @@ GEM
     factory_bot_rails (5.0.2)
       factory_bot (~> 5.0.2)
       railties (>= 4.2.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
     ffi (1.10.0)
     figaro (1.1.1)
       thor (~> 0.14)
@@ -371,6 +373,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_bot_rails
+  faker
   figaro
   guard
   guard-rspec

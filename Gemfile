@@ -67,8 +67,12 @@ gem 'scout_apm'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group  :test do
+  gem 'faker'
+end
 group :development, :test do
   gem 'rubocop', require: false
+
   gem 'rubocop-rails'
   gem 'awesome_print'
   gem 'byebug'
@@ -77,7 +81,7 @@ group :development, :test do
   gem 'capybara'
   gem 'guard'
   gem 'database_cleaner'
-   gem 'guard-rspec', require: false
+  gem 'guard-rspec', require: false
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
