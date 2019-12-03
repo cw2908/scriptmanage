@@ -10,10 +10,6 @@ Bundler.require(*Rails.groups)
 
 module Scriptmanage
   class Application < Rails::Application
-    if Rails.application.class.parent_name == 'Scriptmanage'
-      raise('Rename application config/application.rb name cannot be "Scriptmanage"')
-    end
-
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 

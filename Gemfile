@@ -9,7 +9,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6.2'
+gem 'rails', '~> 6.0.1'
 
 gem 'actionview', '>= 5.1.6.2'
 # Use postgres as the database for Active Record
@@ -81,8 +81,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop-rails'
 
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   # gem 'capybara', '~> 2.13'
   # gem 'selenium-webdriver'
