@@ -16,6 +16,8 @@ AllCops:
     - "actiontext/test/dummy/**/*"
     - "**/node_modules/**/*"
     - "**/test/**/*" # using spec tests
+    - "db/migrate/2**.rb" # using spec tests
+    - "db/schema.rb" # using spec tests
 
 Performance:
   Exclude:

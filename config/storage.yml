@@ -1,3 +1,9 @@
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
 amazon:
   service: BetterS3
   access_key_id: <%= ENV.fetch('CLOUDCUBE_ACCESS_KEY_ID') %>

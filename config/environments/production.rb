@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
-config.webpacker.check_yarn_integrity = false
+  config.webpacker.check_yarn_integrity = false
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -24,7 +26,7 @@ config.webpacker.check_yarn_integrity = false
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -90,24 +92,16 @@ config.webpacker.check_yarn_integrity = false
   end
 
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :user_name            => ENV.fetch('GOOGLE_APP_ID'), # Use fetch to force ensure existence
-    :password             => ENV.fetch('GOOGLE_APP_KEY'), # Use fetch to force ensure existence
-    :authentication       => "plain",
-    :enable_starttls_auto => true
+    address: "smtp.gmail.com",
+    port: 587,
+    user_name: ENV.fetch("GOOGLE_APP_ID"), # Use fetch to force ensure existence
+    password: ENV.fetch("GOOGLE_APP_KEY"), # Use fetch to force ensure existence
+    authentication: "plain",
+    enable_starttls_auto: true
   }
 
 
-  config.paperclip_defaults = {
-    storage: :s3,
-    s3_credentials: {
-      bucket: ENV['S3_BUCKET_NAME'],
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-      s3_region: ENV['AWS_REGION'],
-    }
-  }
+  config.active_storage.service = :amazon
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
