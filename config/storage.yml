@@ -1,0 +1,7 @@
+amazon:
+  service: BetterS3
+  access_key_id: <%= ENV.fetch('CLOUDCUBE_ACCESS_KEY_ID') %>
+  secret_access_key: <%= ENV.fetch('CLOUDCUBE_SECRET_ACCESS_KEY') %>
+  region: <%= ENV.fetch('CLOUDCUBE_REGION') %>
+  root: <%= ENV.fetch('CLOUDCUBE_PREFIX') %>
+  bucket: <%= ENV.fetch('CLOUDCUBE_BUCKET') %>
