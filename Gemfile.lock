@@ -90,9 +90,17 @@ GEM
       aws-sdk-core (= 2.11.408)
     aws-sigv4 (1.1.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.13)
     bindex (0.8.1)
+    brakeman (4.7.2)
     builder (3.2.3)
+    bundler-audit (0.6.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 0.18)
     byebug (11.0.1)
     capybara (3.29.0)
       addressable
@@ -102,8 +110,15 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    childprocess (3.0.0)
     climate_control (0.2.0)
+    code_analyzer (0.4.8)
+      sexp_processor
+    codeclimate-engine-rb (0.4.1)
+      virtus (~> 1.0)
     coderay (1.1.2)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -116,6 +131,8 @@ GEM
     connection_pool (2.2.2)
     crass (1.0.5)
     database_cleaner (1.7.0)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -123,7 +140,9 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    equalizer (0.0.11)
     erubi (1.9.0)
+    erubis (2.7.0)
     execjs (2.7.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
@@ -162,6 +181,8 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
+    ice_nine (0.11.2)
+    iniparse (1.4.4)
     jaro_winkler (1.5.4)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
@@ -170,6 +191,8 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    json (2.2.0)
+    kwalify (0.7.2)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (4.0.0)
@@ -208,6 +231,9 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    overcommit (0.51.0)
+      childprocess (>= 0.6.3, < 4)
+      iniparse (~> 1.4)
     paperclip (6.1.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -221,6 +247,7 @@ GEM
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    psych (3.1.0)
     public_suffix (4.0.1)
     puma (3.12.1)
     rack (2.0.7)
@@ -250,6 +277,14 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
+    rails_best_practices (1.19.4)
+      activesupport
+      code_analyzer (>= 0.4.8)
+      erubis
+      i18n
+      json
+      require_all (~> 2.0)
+      ruby-progressbar
     railties (6.0.1)
       actionpack (= 6.0.1)
       activesupport (= 6.0.1)
@@ -270,7 +305,14 @@ GEM
     redis (4.1.3)
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
+    reek (5.5.0)
+      codeclimate-engine-rb (~> 0.4.0)
+      kwalify (~> 0.7.0)
+      parser (>= 2.5.0.0, < 2.7, != 2.5.1.1)
+      psych (~> 3.1.0)
+      rainbow (>= 2.0, < 4.0)
     regexp_parser (1.6.0)
+    require_all (2.0.0)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -309,6 +351,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-performance (1.5.1)
+      rubocop (>= 0.71.0)
     rubocop-rails (2.4.0)
       rack (>= 1.1)
       rubocop (>= 0.72.0)
@@ -331,6 +375,7 @@ GEM
       ffi (~> 1.9)
     scout_apm (2.6.4)
       parser
+    sexp_processor (4.13.0)
     shellany (0.0.1)
     sinatra (2.0.7)
       mustermann (~> 1.0)
@@ -369,6 +414,11 @@ GEM
     unicode-display_width (1.6.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (4.0.1)
@@ -395,6 +445,8 @@ DEPENDENCIES
   annotate!
   awesome_print
   aws-sdk (~> 2.3)
+  brakeman (~> 4.7)
+  bundler-audit (~> 0.6.1)
   byebug
   capybara
   coffee-rails (~> 4.2)
@@ -410,17 +462,21 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   loofah (>= 2.2.3)
   nokogiri (>= 1.8.5)
+  overcommit (~> 0.51.0)
   paperclip
   pg
   puma (~> 3.7)
   rack (>= 2.0.6)
   rails (~> 6.0.1)
+  rails_best_practices (~> 1.19)
   react_on_rails (= 11.0.9)
   redis (~> 4.0)
+  reek (~> 5.5)
   resque!
   resque-web
   rspec-rails
   rubocop
+  rubocop-performance (~> 1.5)
   rubocop-rails
   samanage
   sass-rails (~> 5.0)
@@ -434,7 +490,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.6.5p114
 
 BUNDLED WITH
    2.0.2
