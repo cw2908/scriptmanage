@@ -5,15 +5,14 @@ Clone this repo to generate a new rails app preconfigured for easy Samanage inte
 
 ### Architecture
 
-- Rails 5
+- Rails 6
 - Postgres
 - Devise
 - Resque
 - Redis
-- React w/ Salesforce Lightning Components
+- React
 - AWS (S3 file storage)
-- NodeJS (use `yarn install` for webpack and node modules)
-- RSpec / Guard
+- RSpec
  
  
  #### Features
