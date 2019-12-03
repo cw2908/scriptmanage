@@ -52,7 +52,6 @@ gem "haml"
 
 gem "paperclip"
 
-gem "aws-sdk", "~> 2.3"
 
 gem "rack", ">= 2.0.6"
 
@@ -107,3 +106,5 @@ gem "reek", "~> 5.5", group: :development
 gem "rails_best_practices", "~> 1.19", group: :development
 
 gem "brakeman", "~> 4.7", group: :development, require: false
+
+gem "aws-sdk-s3", "~> 1.57"
