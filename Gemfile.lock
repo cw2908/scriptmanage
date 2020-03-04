@@ -255,7 +255,7 @@ GEM
       method_source (~> 0.9.0)
     psych (3.1.0)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.4)
     rack (2.0.7)
     rack-protection (2.0.7)
       rack
@@ -471,7 +471,7 @@ DEPENDENCIES
   overcommit (~> 0.51.0)
   paperclip
   pg
-  puma (~> 3.7)
+  puma (~> 3.12)
   rack (>= 2.0.6)
   rails (~> 6.0.1)
   rails_best_practices (~> 1.19)
